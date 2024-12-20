@@ -24,13 +24,13 @@ class FuncionarioController extends Controller
      */
     public function create()
     {
-        return view('funcionarios.create');
+        return view('funcionario.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUpdateFuncionarioRequest $request)
     {
         Funcionario::create($request->validated());
         return redirect()->route('funcionarios.index')->with('success', 'Funcionário criado com sucesso!');
@@ -67,7 +67,7 @@ class FuncionarioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreUpdateFuncionarioRequest $request, string $id)
     {
         $funcionario = Funcionario::find((int)$id);
 

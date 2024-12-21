@@ -21,3 +21,7 @@ Route::get('/', function () {
 });
 
 Route::resource('funcionarios', FuncionarioController::class);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

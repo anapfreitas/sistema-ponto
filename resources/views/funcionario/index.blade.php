@@ -1,18 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Lista de Funcionários')
+@section('title', 'Funcionários')
 
 @section('content')
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h1>Funcionários</h1>
-    <a href="{{ route('funcionarios.create') }}" class="btn btn-primary">Adicionar Funcionário</a>
-</div>
+<h1 class="h3 mb-4 text-gray-800">Funcionários</h1>
 
-@if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+<a href="{{ route('funcionarios.create') }}" class="btn btn-primary mb-4">Adicionar Funcionário</a>
 
 <table class="table table-bordered">
     <thead>
@@ -26,7 +19,7 @@
         </tr>
     </thead>
     <tbody>
-        @forelse($funcionarios as $funcionario)
+        @forelse ($funcionarios as $funcionario)
         <tr>
             <td>{{ $funcionario->id }}</td>
             <td>{{ $funcionario->nome }}</td>
@@ -50,3 +43,4 @@
     </tbody>
 </table>
 @endsection
+

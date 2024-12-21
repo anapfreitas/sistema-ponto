@@ -5,6 +5,22 @@
 @section('content')
 <h1>Adicionar Funcionário</h1>
 
+@if(session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
+@if($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
 <form action="{{ route('funcionarios.store') }}" method="POST" class="mt-4">
     @csrf
 
@@ -15,7 +31,7 @@
 
     <div class="mb-3">
         <label for="cpf" class="form-label">CPF</label>
-        <input type="text" name="cpf" id="cpf" class="form-control" value="{{ old('cpf') }}" required>
+        <input type="text" name="cpf" id="cpf" class="form-control" value="{{ old('cpf') }}" required pattern="\d{11}" title="O CPF deve conter exatamente 11 números.">
     </div>
 
     <div class="mb-3">
